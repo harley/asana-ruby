@@ -6,6 +6,7 @@ module Asana
       Asana.configure do |c|
         c.api_key = 'nSZfywi.U8aR4lxeTJBkYgK84Ton0UNp'
       end
+      VCR.insert_cassette('users', record: :new_episodes)
     end
 
     describe '.me' do

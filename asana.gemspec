@@ -15,9 +15,11 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = Asana::VERSION
 
-  gem.add_dependency 'activeresource'
+  gem.add_dependency 'activeresource', '>= 3.0'
 
   gem.add_development_dependency 'rspec', '~> 2.11'
   gem.add_development_dependency 'guard'
   gem.add_development_dependency 'guard-rspec'
+  gem.add_development_dependency 'vcr', '~> 2.2.4'
+  gem.add_development_dependency 'webmock', '~> 1.8.8'
 end
