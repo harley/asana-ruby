@@ -12,6 +12,8 @@ module Asana
       yield self
       Resource.site = DEFAULT_ENDPOINT
       Resource.user = self.api_key
+      Resource.password  = ''
+      Resource.format    = :json
     end
   end
 end
