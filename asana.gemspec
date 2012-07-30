@@ -16,4 +16,6 @@ Gem::Specification.new do |gem|
   gem.version       = Asana::VERSION
 
   gem.add_development_dependency 'rspec', '~> 2.11'
+  gem.add_development_dependency 'guard'
+  gem.add_development_dependency 'guard-rspec'
 end
