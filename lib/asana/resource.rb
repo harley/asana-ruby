@@ -1,5 +1,10 @@
 module Asana
   class Resource < ActiveResource::Base
+    def method_not_allowed
+      raise ActiveResource::MethodNotAllowed.new(__method__)
+    end
+
+    # OVERRIDING
     class << self
       # override to remove .json extension in the URL
       def custom_method_collection_url(method_name, options = {})

@@ -3,7 +3,7 @@ require 'spec_helper'
 module Asana
   describe User do
     before do
-      VCR.insert_cassette('users', record: :new_episodes)
+      VCR.insert_cassette('users', record: :all)
       authorize_with_asana
     end
 

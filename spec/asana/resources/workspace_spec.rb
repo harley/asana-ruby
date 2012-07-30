@@ -3,7 +3,7 @@ require 'pry'
 
 describe Asana::Workspace do
   before do
-    VCR.insert_cassette('workspaces', record: :new_episodes)
+    VCR.insert_cassette('workspaces', record: :all)
     authorize_with_asana
   end
 

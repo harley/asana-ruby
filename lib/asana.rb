@@ -11,4 +11,7 @@ require 'asana/resources/task'
 module Asana
   # Your code goes here...
   extend Config
+  def self.default_workspace
+    Asana::Workspace.first
+  end
 end
