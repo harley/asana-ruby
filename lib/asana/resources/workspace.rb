@@ -8,6 +8,6 @@ class Asana::Workspace < Asana::Resource
     Asana::Task.new(connection.format.decode(response.body))
   rescue Exception => e
     $stderr.puts "ERROR: #{e.message}"
-    $stderr.puts "RESPONSE: #{e.response.body}"
+    $stderr.puts "RESPONSE: #{e.response.body}" if e.respond_to?(:response)
   end
 end
