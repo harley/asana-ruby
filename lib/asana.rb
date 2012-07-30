@@ -1,3 +1,5 @@
+require 'active_resource'
+
 require 'asana/version'
 require 'asana/config'
 

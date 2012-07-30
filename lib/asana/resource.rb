@@ -1,7 +1,4 @@
 module Asana
-  class Resource
-    class << self
-      attr_accessor :site, :user
-    end
+  class Resource < ActiveResource::Base
   end
 end
