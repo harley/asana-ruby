@@ -14,4 +14,6 @@ Gem::Specification.new do |gem|
   gem.name          = "asana"
   gem.require_paths = ["lib"]
   gem.version       = Asana::VERSION
+
+  gem.add_development_dependency 'rspec', '~> 2.11'
 end
