@@ -22,4 +22,5 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency 'guard-rspec'
   gem.add_development_dependency 'vcr', '~> 2.2.4'
   gem.add_development_dependency 'webmock', '~> 1.8.8'
+  gem.add_development_dependency 'pry'
 end
