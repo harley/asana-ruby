@@ -7,6 +7,10 @@ module Asana
       authorize_with_asana
     end
 
+    after do
+      VCR.eject_cassette
+    end
+
     describe "showing a single user" do
       describe '.me' do
         specify do
