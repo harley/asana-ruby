@@ -20,11 +20,4 @@ describe Asana::Task do
       end
     end
   end
-
-  context "ActiveResource supported methods" do
-
-    it "" do
-      binding.pry
-    end
-  end
 end
