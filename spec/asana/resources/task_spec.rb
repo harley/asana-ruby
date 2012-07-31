@@ -16,4 +16,17 @@ describe Asana::Task do
       end
     end
   end
+
+  describe ".remove_project and .add_project" do
+    let(:project) { Asana::Project.first }
+    let(:task) { project.tasks.first }
+
+    it "should work" do
+      task.remove_project(project)
+      project.tasks.should_not include task
+
+      task.add_project(project)
+      project.tasks.should include task
+    end
+  end
 end

@@ -15,6 +15,6 @@ class Asana::Project < Asana::Resource
   end
 
   def tasks
-    get :tasks
+    get(:tasks).map{|h| Asana::Task.find h["id"]}
   end
 end
