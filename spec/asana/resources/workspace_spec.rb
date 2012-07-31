@@ -2,13 +2,9 @@ require 'spec_helper'
 require 'pry'
 
 describe Asana::Workspace do
+  use_vcr_cassette
   before do
-    VCR.insert_cassette('workspaces', record: :all)
     authorize_with_asana
-  end
-
-  after do
-    VCR.eject_cassette
   end
 
   let(:workspace) { Asana::Workspace.first }

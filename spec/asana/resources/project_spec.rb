@@ -2,13 +2,9 @@ require 'spec_helper'
 
 module Asana
   describe Project do
+    use_vcr_cassette
     before do
-      VCR.insert_cassette('tasks', record: :all)
       authorize_with_asana
-    end
-
-    after do
-      VCR.eject_cassette
     end
 
     describe '.all' do

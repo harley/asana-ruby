@@ -2,13 +2,9 @@ require 'spec_helper'
 
 module Asana
   describe User do
+    use_vcr_cassette
     before do
-      VCR.insert_cassette('users', record: :all)
       authorize_with_asana
-    end
-
-    after do
-      VCR.eject_cassette
     end
 
     describe "showing a single user" do
