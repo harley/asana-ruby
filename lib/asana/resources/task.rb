@@ -14,5 +14,15 @@ module Asana
       project = project.id if project.is_a?(Project)
       post('removeProject', nil, {data: {project: project}}.to_json)
     end
+
+    def add_tag(tag)
+      tag = tag.id if tag.is_a?(Tag)
+      post('addTag', nil, {data: {tag: tag}}.to_json)
+    end
+
+    def remove_tag(tag)
+      tag = tag.id if tag.is_a?(Tag)
+      post('removeTag', nil, {data: {tag: tag}}.to_json)
+    end
   end
 end
