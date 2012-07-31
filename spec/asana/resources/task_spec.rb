@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'pry'
 
 describe Asana::Task do
   use_vcr_cassette
@@ -28,5 +27,10 @@ describe Asana::Task do
       task.add_project(project)
       project.tasks.should include task
     end
+  end
+
+  describe ".add_tag and .remove_tag" do
+    let(:tag)
+
   end
 end

@@ -1,5 +1,3 @@
-require 'pry'
-
 class Asana::Project < Asana::Resource
   alias :create :method_not_allowed
   alias :destroy :method_not_allowed

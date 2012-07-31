@@ -10,10 +10,10 @@ module Asana
     attr_accessor :api_key
     def configure
       yield self
-      Resource.site = DEFAULT_ENDPOINT
       Resource.user = self.api_key
       Resource.password  = ''
       Resource.format    = :json
+      Resource.site = DEFAULT_ENDPOINT
     end
   end
 end

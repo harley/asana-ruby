@@ -4,7 +4,7 @@ require File.expand_path('../lib/asana/version', __FILE__)
 Gem::Specification.new do |gem|
   gem.authors       = ["Harley Trung"]
   gem.email         = ["harley@socialsci.com"]
-  gem.description   = %q{Ruby wrapper for Asana}
+  gem.description   = %q{Ruby API wrapper for Asana, supporting workspaces, projects, tasks, tags, users and stories}
   gem.summary       = %q{Ruby wrapper for Asana}
   gem.homepage      = ""
 
