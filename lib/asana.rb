@@ -8,6 +8,7 @@ require 'asana/resources/user'
 require 'asana/resources/workspace'
 require 'asana/resources/task'
 require 'asana/resources/project'
+require 'asana/resources/tag'
 
 module Asana
   # Your code goes here...
