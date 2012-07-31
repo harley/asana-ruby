@@ -4,6 +4,11 @@ module Asana
       raise ActiveResource::MethodNotAllowed.new(__method__)
     end
 
+    # override
+    def reload
+      self.class.find id
+    end
+
     # OVERRIDING
     class << self
       def remove_json_extension(url)

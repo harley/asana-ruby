@@ -29,8 +29,7 @@ describe Asana::Task do
     end
   end
 
-  describe ".add_tag and .remove_tag" do
-    let(:tag)
+  pending ".add_tag and .remove_tag"
 
-  end
+  pending "adding duplicate tags"
 end
