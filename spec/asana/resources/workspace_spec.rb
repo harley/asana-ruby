@@ -49,5 +49,17 @@ module Asana
         workspace.tags.first.should be_instance_of Tag
       end
     end
+
+    describe ".find_or_create_tag" do
+      it "should not create two tags of the same name" do
+        tag1 = workspace.find_or_create_tag(name: 'test .find_or_create_tag')
+        tag2 = workspace.find_or_create_tag(name: 'test .find_or_create_tag')
+        tag1.id.should == tag2.id
+      end
+
+      it "should only create tag account by one" do
+        expect { 3.times { workspace.find_or_create_tag(name: '3 times') } }.to change { workspace.tags.size }.by(1)
+      end
+    end
   end
 end

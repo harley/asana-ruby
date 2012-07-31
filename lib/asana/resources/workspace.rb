@@ -9,6 +9,7 @@ module Asana
       response = Task.post(nil, nil, post_body.to_json)
       hash = connection.format.decode(response.body)
 
+      # want to return a persisted record
       Task.find hash["id"]
     rescue Exception => e
       $stderr.puts "ERROR: #{e.message}"
@@ -23,6 +24,11 @@ module Asana
     rescue Exception => e
       $stderr.puts "ERROR: #{e.message}"
       $stderr.puts "RESPONSE: #{e.response.body}" if e.respond_to?(:response)
+    end
+
+    # TODO imporve this when Asana API is more advanced
+    def find_or_create_tag(options = {})
+      tags.find {|t| t.name == options[:name]} || create_tag(options)
     end
 
     def create_tag(options = {})
