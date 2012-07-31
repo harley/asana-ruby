@@ -2,7 +2,7 @@ require 'pry'
 module Asana
   class Workspace < Asana::Resource
     def create_task(options = {})
-      options.merge!(assignee: 'me') unless options[:assignee] or options['assignee']
+      # options.merge!(assignee: 'me') unless options[:assignee] or options['assignee']
       options.merge!(workspace: self.id)
 
       post_body = { data: options }
