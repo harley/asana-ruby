@@ -35,7 +35,9 @@ module Asana
 
     # TODO imporve this when Asana API is more advanced
     def find_or_create_tag(options = {})
-      tags.find {|t| t.name == options[:name]} || create_tag(options)
+      cached_tags.find {|t| t.name && options[:name] && t.name.strip == options[:name].strip } ||
+        tags.find {|t| t.name && options[:name] && t.name.strip == options[:name].strip } ||
+        create_tag(options)
     end
 
     def create_tag(options = {})
@@ -44,7 +46,11 @@ module Asana
     end
 
     def tags
-      get(:tags).map{|h| Asana::Tag.find h["id"]}
+      @cached_tags = get(:tags).map{|h| Asana::Tag.find h["id"]}
+    end
+
+    def cached_tags
+      @cached_tags || []
     end
   end
 end
