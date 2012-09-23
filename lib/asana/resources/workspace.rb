@@ -37,20 +37,29 @@ module Asana
     def find_or_create_tag(options = {})
       cached_tags.find {|t| t.name && options[:name] && t.name.strip == options[:name].strip } ||
         tags.find {|t| t.name && options[:name] && t.name.strip == options[:name].strip } ||
-        create_tag(options)
+          create_tag(options)
     end
 
     def create_tag(options = {})
       response = post("tags", nil, {data: options}.to_json)
-      Asana::Tag.new(connection.format.decode(response.body))
+      Asana::Tag.new(connection.format.decode(response.body), true)
     end
 
     def tags
-      @cached_tags = get(:tags).map{|h| Asana::Tag.find h["id"]}
+      @cached_tags = get(:tags).map{|h| Asana::Tag.new(h, true)}
+    end
+
+    def add_to_cached(tag)
+      @cached_tags ||= []
+      @cached_tags << tag
     end
 
     def cached_tags
-      @cached_tags || []
+      if @cached_tags
+        @cached_tags
+      else
+        tags
+      end
     end
   end
 end
