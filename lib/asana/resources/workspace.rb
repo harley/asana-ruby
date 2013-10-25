@@ -20,7 +20,11 @@ module Asana
     def tasks(options = {})
       options.merge!(assignee: 'me') unless options[:assignee] or options['assignee']
 
-      get("tasks?assignee=#{options[:assignee]}").map{|h| Asana::Task.find h["id"]}
+      url = "tasks?assignee=#{options[:assignee]}"
+
+      url += "&include_archived=true" if options[:include_archived]
+
+      get(url).map { |h| Asana::Task.find h["id"] }
     rescue Exception => e
       $stderr.puts "ERROR: #{e.message}"
       $stderr.puts "RESPONSE: #{e.response.body}" if e.respond_to?(:response)
