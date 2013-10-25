@@ -31,7 +31,7 @@ module Asana
     end
 
     def completed_tasks
-      tasks.select { |task| task.completed == true}
+      tasks.select(&:completed?)
     end
 
     # TODO imporve this when Asana API is more advanced

@@ -54,9 +54,9 @@ module Asana
       end
     end
 
-    describe ".completed_tasks" do
+    describe ".completed_tasks", focus: true do
       it "returns only completed tasks" do
-        expect(workspace.completed_tasks.all? { |t| t.completed == true }).to be
+        expect(workspace.completed_tasks.all?(&:completed)).to be
       end
     end
 
