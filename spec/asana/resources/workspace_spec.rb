@@ -41,7 +41,7 @@ module Asana
         workspace.tasks.first.should be_instance_of Task
       end
 
-      context "with include_archived set to true in options", focus: true do
+      context "with include_archived set to true in options" do
         it "should pass the option as part of the query string for the API endpoint" do
           stub_request(:any, "app.asana.com")
           workspace.tasks(include_archived: true)
