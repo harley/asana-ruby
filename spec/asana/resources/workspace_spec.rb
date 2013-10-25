@@ -54,6 +54,12 @@ module Asana
       end
     end
 
+    describe ".completed_tasks" do
+      it "returns only completed tasks" do
+        expect(workspace.completed_tasks.all? { |t| t.completed == true }).to be
+      end
+    end
+
     describe "tags" do
       subject { workspace }
       its(:tags) { should be_instance_of Array }
