@@ -40,6 +40,18 @@ module Asana
       it "should return task instances" do
         workspace.tasks.first.should be_instance_of Task
       end
+
+      context "with include_archived set to true in options", focus: true do
+        it "should pass the option as part of the query string for the API endpoint" do
+          stub_request(:any, "app.asana.com")
+          workspace.tasks(include_archived: true)
+
+          to_url = %r{app.asana.com/api/1.0/workspaces/#{workspace.id}/tasks}
+          a_request(:get, to_url).with(
+            query: hash_including({include_archived: 'true'})
+          ).should have_been_made
+        end
+      end
     end
 
     describe "tags" do
