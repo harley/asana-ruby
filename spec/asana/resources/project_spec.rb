@@ -1,8 +1,7 @@
 require 'spec_helper'
 
 module Asana
-  describe Project do
-    use_vcr_cassette
+  describe Project, vcr: true do
     before do
       authorize_with_asana
     end
@@ -10,7 +9,7 @@ module Asana
     describe '.all' do
       it 'should return all of the user\'s projects' do
         projects = Project.all
-        projects.should be_instance_of Array
+        projects.should be_instance_of ActiveResource::Collection
         projects.first.should be_instance_of Project
       end
     end

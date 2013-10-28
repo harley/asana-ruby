@@ -7,10 +7,7 @@ VCR.configure do |c|
   c.cassette_library_dir = 'spec/fixtures/cassettes'
   c.hook_into :webmock
   c.default_cassette_options = { :record => :new_episodes }
-end
-
-RSpec.configure do |c|
-  c.extend VCR::RSpec::Macros
+  c.configure_rspec_metadata!
 end
 
 def authorize_with_asana
