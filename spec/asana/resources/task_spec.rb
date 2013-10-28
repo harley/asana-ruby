@@ -1,7 +1,6 @@
 require 'spec_helper'
 
-describe Asana::Task do
-  use_vcr_cassette
+describe Asana::Task, vcr: true do
   before do
     authorize_with_asana
   end

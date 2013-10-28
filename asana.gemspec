@@ -17,11 +17,12 @@ Gem::Specification.new do |gem|
 
   gem.add_dependency 'activeresource', '>= 3.0'
 
+  gem.add_development_dependency 'typhoeus', '0.4.0'
   gem.add_development_dependency 'rake'
   gem.add_development_dependency 'rspec', '~> 2.11'
   gem.add_development_dependency 'guard'
   gem.add_development_dependency 'guard-rspec'
-  gem.add_development_dependency 'vcr', '~> 2.2.4'
+  gem.add_development_dependency 'vcr', '2.6.0'
   gem.add_development_dependency 'webmock', '~> 1.8.8'
   gem.add_development_dependency 'pry'
   gem.add_development_dependency 'pry-debugger'
