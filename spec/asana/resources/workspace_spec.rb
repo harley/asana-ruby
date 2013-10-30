@@ -60,10 +60,25 @@ module Asana
     end
 
     describe "tags" do
+      let(:fake_tag) { double("Asana::Tag", name: "Test") }
+
       subject { workspace }
       its(:tags) { should be_instance_of Array }
       it "should return task instances" do
         workspace.tags.first.should be_instance_of Tag
+      end
+
+      it "should memoize tags" do
+        expect(Asana::Tag).to receive(:new).and_return(fake_tag)
+        Asana::Tag.stub(:new).and_return(fake_tag)
+        expect(workspace).to receive(:get).once.and_return([fake_tag])
+        workspace.tags # first time
+        workspace.tags # second time
+      end
+
+      it "should return the same result with force_reload (if no changes)" do
+        expect(workspace.tags.size).to be > 0 # it'd be meaningless to compare if there are no tags
+        expect(workspace.tags).to eq workspace.tags(true)
       end
     end
 
@@ -71,7 +86,7 @@ module Asana
       let(:fake_tag) { double("Asana::Tag", name: "Test") }
 
       before do
-        expect(workspace).to receive(:tags).and_return([fake_tag])
+        expect(workspace).to receive(:tags).at_least(:once).and_return([fake_tag])
       end
 
       it "should not create two tags of the same name" do
