@@ -30,6 +30,10 @@ module Asana
       $stderr.puts "RESPONSE: #{e.response.body}" if e.respond_to?(:response)
     end
 
+    def completed_tasks
+      tasks.select(&:completed?)
+    end
+
     # TODO imporve this when Asana API is more advanced
     def find_or_create_tag(options = {})
       tags.find {|t| t.name == options[:name]} || create_tag(options)
