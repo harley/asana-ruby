@@ -1,8 +1,7 @@
 require 'spec_helper'
 
 module Asana
-  describe User do
-    use_vcr_cassette
+  describe User, vcr: true do
     before do
       authorize_with_asana
     end

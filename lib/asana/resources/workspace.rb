@@ -1,4 +1,3 @@
-require 'pry'
 module Asana
   class Workspace < Asana::Resource
     def create_task(options = {})

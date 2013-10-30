@@ -1,8 +1,7 @@
 require 'spec_helper'
 
 module Asana
-  describe Workspace do
-    use_vcr_cassette
+  describe Workspace, vcr: true do
     before do
       authorize_with_asana
     end
@@ -69,14 +68,20 @@ module Asana
     end
 
     describe ".find_or_create_tag" do
-      it "should not create two tags of the same name" do
-        tag1 = workspace.find_or_create_tag(name: 'test .find_or_create_tag')
-        tag2 = workspace.find_or_create_tag(name: 'test .find_or_create_tag')
-        tag1.id.should == tag2.id
+      let(:fake_tag) { double("Asana::Tag", name: "Test") }
+
+      before do
+        expect(workspace).to receive(:tags).and_return([fake_tag])
       end
 
-      it "should only create tag account by one" do
-        expect { 3.times { workspace.find_or_create_tag(name: '3 times') } }.to change { workspace.tags.size }.by(1)
+      it "should not create two tags of the same name" do
+        test_tag = workspace.find_or_create_tag(name: "Test")
+        expect(test_tag).to be(fake_tag)
+      end
+
+      it "should create a tag that doesn't yet exist" do
+        new_tag = workspace.find_or_create_tag(name: "Nope")
+        expect(new_tag).to be_instance_of(Asana::Tag)
       end
     end
   end
