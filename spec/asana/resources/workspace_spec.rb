@@ -80,6 +80,10 @@ module Asana
         expect(workspace.tags.size).to be > 0 # it'd be meaningless to compare if there are no tags
         expect(workspace.tags).to eq workspace.tags(true)
       end
+
+      it "should return the same tags as load_tags_by_id", focus: true do
+        expect(workspace.tags).to eq workspace.load_tags_by_id
+      end
     end
 
     describe ".find_or_create_tag" do
