@@ -17,7 +17,6 @@ Gem::Specification.new do |gem|
 
   gem.add_dependency 'activeresource', '>= 3.0'
 
-  gem.add_development_dependency 'typhoeus', '0.4.0'
   gem.add_development_dependency 'rake'
   gem.add_development_dependency 'rspec', '~> 2.11'
   gem.add_development_dependency 'guard'
