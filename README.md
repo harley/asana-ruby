@@ -162,6 +162,19 @@ story = Story.find(:story_id)
 task.create_story(story_settings)
 ```
 
+### [Tags][]
+
+> A tag is a label that can be attached to any task in Asana. It exists in a
+> single workspace or organization.
+
+```ruby
+# Get a specific tag
+tag = Asana::Tag.find(:tag_id)
+
+# Get all tasks that have that specific tag
+tasks = tag.tasks
+```
+
 ## Contributing
 
 1. Fork it
@@ -178,3 +191,4 @@ task.create_story(story_settings)
 [Projects]: http://developer.asana.com/documentation/#projects
 [Tasks]: http://developer.asana.com/documentation/#tasks
 [Stories]: http://developer.asana.com/documentation/#stories
+[Tags]: http://developer.asana.com/documentation/#tags
